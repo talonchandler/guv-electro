@@ -7,7 +7,12 @@ The script generate a
 2. 120 minute sine at 10 Hz at 1.41 Vpp
 3. 30 minute square at 4.5 Hz at 2.12 Vpp.
 
-Requires Python 3.
+## Installation 
+
+Install Python 3.
+Use pip to install `numpy`, and `pyserial`. 
+Modify script path to find interpreter.
+Modify serial port `COMX` on Windows and `/dev/ttyXXX` otherwise.
 
 Example usage:
 
