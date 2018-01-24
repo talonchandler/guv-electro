@@ -14,8 +14,9 @@ else:
     print(str(np.round(multiplier*3, 2))+' HOUR PROGRAM STARTING')
 
 # Definitions
-port = "/dev/tty.usbserial-ftDDL0UJ"
 baud = 9600
+#port = "/dev/tty.usbserial-ftDDL0UJ"
+port = "/dev/ttyUSB0"
 
 def write(serial, string):
     write_string = string+'\r\n'

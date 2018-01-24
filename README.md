@@ -7,6 +7,14 @@ The script generate a
 2. 120 minute sine at 10 Hz at 1.41 Vpp
 3. 30 minute square at 4.5 Hz at 2.12 Vpp.
 
+## Run from raspberry pi
+
+`ssh pi@10.208.2.178` 
+`password: polscope`
+
+`cd guv-electro`
+`./guv-electro`
+
 ## Installation 
 
 Install Python 3.
@@ -21,3 +29,9 @@ Example usage:
 Test script (argument multiplies total time):
 
     ./guv-electro 0.01
+
+Note:
+
+You may have to modify the serial port. 
+
+For raspberry pi use default "/dev/ttyUSB0".
