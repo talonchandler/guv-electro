@@ -9,11 +9,11 @@ The script generate a
 
 ## Run from raspberry pi
 
-`ssh pi@10.208.2.178` 
-`password: polscope`
+    ssh pi@10.208.2.178
+    password: polscope
 
-`cd guv-electro`
-`./guv-electro`
+    cd guv-electro
+    ./guv-electro
 
 ## Installation 
 
@@ -30,8 +30,3 @@ Test script (argument multiplies total time):
 
     ./guv-electro 0.01
 
-Note:
-
-You may have to modify the serial port. 
-
-For raspberry pi use default "/dev/ttyUSB0".
