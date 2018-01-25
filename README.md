@@ -28,6 +28,6 @@ Test script (argument multiplies the total run time):
 
 Install Python 3.  Use `pip` to install `numpy`, and `pyserial`.  Modify the
 script path to find interpreter.  Modify the serial port path to find the
-function generator. `COMX` on Windows and `/dev/ttyXXX` otherwise.
+function generator. Use `COMX` on Windows and `/dev/ttyXXX` otherwise.
 
 
