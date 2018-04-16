@@ -4,14 +4,18 @@ import numpy as np
 import serial
 import time
 import sys
+sys.stdout.flush()
+
+def myprint(string):
+    print(string, flush=True)
 
 # Find total time
 if len(sys.argv) == 1:
     multiplier = 1.0
-    print('3 HOUR PROGRAM STARTING')
+    myprint('3 HOUR PROGRAM STARTING')
 else:
     multiplier = float(sys.argv[1])
-    print(str(np.round(multiplier*3, 2))+' HOUR PROGRAM STARTING')
+    myprint(str(np.round(multiplier*3, 2))+' HOUR PROGRAM STARTING')
 
 # Definitions
 baud = 9600
@@ -26,36 +30,41 @@ def write(serial, string):
 try:
     s = serial.Serial(port, baud, timeout=1)
 except:
-    print('Serial port not found. Check port name.')
+    myprint('Serial port not found. Check port name.')
     exit()
 if s.isOpen():
     write(s, 'SYSTEM:REMOTE')
-    print(s.name + ' is open...')
+    myprint(s.name + ' is open...')
 else:
-    print('Serial port error.')
+    myprint('Serial port error.')
     exit()
 
 # Main script
-print("PHASE 1: SIN 10 HZ 0.05 - 1.14 VPP RAMP 30 MIN")
+myprint("PHASE 1: SIN 10 HZ 0.05 - 1.14 VPP RAMP 30 MIN")
+write(s, 'FUNC:SHAP SIN')
+write(s, 'FREQ 10')
 for i in range(30):
+    myprint('PHASE 1: ' + str(i) + '/30 MIN')
     voltage = np.round((i/(30-1))*(1.14 - 0.05) + 0.05, 2)
-    write_string = 'APPL:SIN 10 HZ, '+str(voltage)+' VPP'
-    write(s, write_string)
-    print('PHASE 1: ' + str(i) + '/30 MIN')    
+    write(s, 'VOLT '+str(voltage))
     time.sleep(60*multiplier)
     
-print("PHASE 2: SIN 10 HZ 1.14 VPP 120 MIN")
-write(s, 'APPL:SIN 10 HZ, 1.14 VPP')
+myprint("PHASE 2: SIN 10 HZ 1.14 VPP 120 MIN")
+write(s, 'FUNC:SHAP SIN')
+write(s, 'FREQ 10')
 for i in range(120):
-    print('PHASE 2: ' + str(i) + '/120 MIN')
+    myprint('PHASE 2: ' + str(i) + '/120 MIN')
+    write(s, 'VOLT 1.14')
     time.sleep(60*multiplier)
     
-print("PHASE 3: SQU 4.5 HZ 2.12 VPP 30 MIN")
-write(s, 'APPL:SQU 4.5 HZ, 2.12 VPP')
+myprint("PHASE 3: SQU 4.5 HZ 2.12 VPP 30 MIN")
+write(s, 'FUNC:SHAP SQU')
+write(s, 'FREQ 4.5')
+write(s, 'VOLT 2.12')
 for i in range(30):
-    print('PHASE 3: ' + str(i) + '/30 MIN')
+    myprint('PHASE 3: ' + str(i) + '/30 MIN')
     time.sleep(60*multiplier)
 
 write(s, 'APPL:DC DEF, DEF, 0')
 time.sleep(1)
-print("COMPLETE! FUNCTION GENERATOR OFF.")        
+myprint("COMPLETE! FUNCTION GENERATOR OFF.")

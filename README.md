@@ -23,6 +23,10 @@ Test script (argument multiplies the total run time):
 
     ./guv-electro 0.01
 
+Run remotely and log out
+
+    nohup ./guv-electro &
+    tail -f nohup.out
 
 ## Installation 
 
