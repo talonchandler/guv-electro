@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ARG1=${1:-1}
+nohup ./guv-electro $ARG1 &
+tail -f nohup.out

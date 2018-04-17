@@ -23,10 +23,18 @@ Test script (argument multiplies the total run time):
 
     ./guv-electro 0.01
 
-Run remotely and log out
+Run with no hangups, log the output, and tail the log file
 
-    nohup ./guv-electro &
+    ./run-guv
+
+Watch the output
+
     tail -f nohup.out
+
+To quit the job midway through, find the PID of the python process and kill it
+
+    ps
+    kill PID
 
 ## Installation 
 
