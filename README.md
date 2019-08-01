@@ -7,7 +7,11 @@ The script generates a
 2. 120 minute sine at 10 Hz at 1.41 Vpp
 3. 30 minute square at 4.5 Hz at 2.12 Vpp.
 
-## Run from raspberry pi
+## Find IP address from raspberry pi
+
+   hostname -I   
+
+## SSH into raspberry pi from any computer on the network
 
     ssh pi@10.208.2.178
     password: polscope
