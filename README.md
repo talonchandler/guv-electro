@@ -9,11 +9,11 @@ The script generates a
 
 ## Find IP address from raspberry pi
 
-   hostname -I   
+    hostname -I   
 
 ## SSH into raspberry pi from any computer on the network
 
-    ssh pi@10.208.2.178
+    ssh pi@10.208.2.178 (your IP address here)
     password: polscope
 
     cd guv-electro
