@@ -11,7 +11,7 @@ The script generates a
 
     hostname -I   
 
-## SSH into raspberry pi from any computer on the network
+## SSH into raspberry pi from any computer on MBL-GUEST
 
     ssh pi@10.208.2.178 (your IP address here)
     password: polscope
@@ -42,7 +42,7 @@ To quit the job midway through, find the PID of the python process and kill it
 
 ## Installation 
 
-Install Python 3.  Use `pip` to install `numpy`, and `pyserial`.  Modify the
+Install Python 3.  Use `pip` to install `numpy` and `pyserial`.  Modify the
 script path to find interpreter.  Modify the serial port path to find the
 function generator. Use `COMX` on Windows and `/dev/ttyXXX` otherwise.
 
