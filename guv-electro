@@ -3,6 +3,7 @@
 import numpy as np
 import serial
 import time
+import datetime
 import sys
 sys.stdout.flush()
 
@@ -10,11 +11,14 @@ def myprint(string):
     print(string, flush=True)
 
 # Find total time
+start_time = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 if len(sys.argv) == 1:
     multiplier = 1.0
+    myprint('STARTED AT: '+start_time)
     myprint('3 HOUR PROGRAM STARTING')
 else:
     multiplier = float(sys.argv[1])
+    myprint('STARTED AT: '+start_time)
     myprint(str(np.round(multiplier*3, 2))+' HOUR PROGRAM STARTING')
 
 # Definitions
@@ -68,3 +72,6 @@ for i in range(30):
 write(s, 'APPL:DC DEF, DEF, 0')
 time.sleep(1)
 myprint("COMPLETE! FUNCTION GENERATOR OFF.")
+end_time = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+myprint('COMPLETED AT: '+end_time)
+
